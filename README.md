@@ -3,6 +3,7 @@ This is an app used for word association game, "The Grid".
 
 ## User guide
 Add 5 sets of 4 related words and 5 extra dummy words
+
 (Build in Electron so that it can run as a separate executable?)
 
 ## TODO
