@@ -1,14 +1,11 @@
 # The Grid
 This is an app used for word association game, "The Grid".
 
+## User guide
 - Clone using git.
 - Run ```npm install``` to install dependencies.
 - Run ```npm start``` to start the development server.
-
-## User guide
-Add 5 sets of 4 related words and 5 extra dummy words
-
-(Build in Electron so that it can run as a separate executable?)
+- Add 5 sets of 4 related words and 5 extra dummy words
 
 ## TODO
 ### Design Specification
@@ -26,6 +23,7 @@ Add 5 sets of 4 related words and 5 extra dummy words
 - UI to add words before the game starts.
 - Inbuilt timer
 - Inbuilt scoring (this may also be a separate app/plugin for better integration with Slides)
+- Build in Electron so that it can run as a separate executable?
 
 
 ### Bugs to fix

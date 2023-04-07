@@ -10,16 +10,13 @@ interface Card {
 function getWords(): string[] {
     const words: string[] = [];
     for (let i = 0; i < 25; i++) {
-        words.push("foo");
+        words.push("card");
     }
     return words;
 }
 
-function generateCards(): Card[] {
-    const words = getWords();
-    
+function generateCards(words: string[]): Card[] {    
     const cards: Card[] = [];
-    let id = 0;
     for (let i = 0; i < 25; i++) {
         const newCard: Card = {
             id: i,
@@ -31,39 +28,46 @@ function generateCards(): Card[] {
     return cards;
 }
 
+function shuffleCards(cards: Card[]): Card[] {
+    let shuffledCards: Card[] = [];
+    for (let i = 0; i < 25; i++) {
+        const randIndex = Math.floor(Math.random() * cards.length);
+        const randCard: Card = cards[randIndex];
+        shuffledCards.push(randCard);
+        cards.splice(randIndex, 1)
+    }
+    return shuffledCards;
+}
+
+function renderCards(cards: Card[]) {
+    const buttons = [];
+    for (let i = 0; i < 25; i++) {
+        const button = (
+        <button className="card">
+            {cards[i].value + " " + cards[i].id + " " + cards[i].isFlipped}
+        </button>
+        );
+    buttons.push(button);
+    }
+    return <div className="card-grid">{buttons}</div>;
+}
+
 function handleCardClick(col: number, row: number) {
     // TODO
 }
-/*
-function shuffleCards(cards): typeof cards {
-
-}
-*/
 
 function App() {
     //const [cards, setCards] = useState<Array<string>>([]);
     //const [flipped, setFlipped] = useState<Array<number>>([]);
     //const [solved, setSolved] = useState<Array<number>>([]);
     
-    const cards = generateCards();
-    //console.log(cards[2].value);
-
-    function renderCards() {
-        const buttons = [];
-        for (let i = 0; i < 25; i++) {
-            const button = (
-            <button className="card">
-                {cards[i].value}
-            </button>
-            );
-        buttons.push(button);
-        }
-        return <div className="card-grid">{buttons}</div>;
-    }
+    const cards = generateCards(getWords());
+    const shuffledCards = shuffleCards(cards);
+    
 
     return (
         <div className='container'>
-            {renderCards()}
+            {renderCards(shuffledCards)}
         </div>
     );
 }
