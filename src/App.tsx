@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import './index.css'
 
-interface Card {
+class Card {
     id: number;
     value: string;
     isFlipped: boolean;
+
+    constructor(id: number, value: string, isFlipped: boolean) {
+        this.id = id;
+        this.value = value;
+        this.isFlipped = isFlipped;
+    }
 }
 
 function getWords(): string[] {
@@ -18,11 +24,7 @@ function getWords(): string[] {
 function generateCards(words: string[]): Card[] {    
     const cards: Card[] = [];
     for (let i = 0; i < 25; i++) {
-        const newCard: Card = {
-            id: i,
-            value: words[i],
-            isFlipped: false,
-        };
+        const newCard = new Card(i, words[i], false);
         cards.push(newCard);
     }
     return cards;

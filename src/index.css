@@ -26,6 +26,10 @@ body {
     cursor: pointer;
   }
 
+  .card-clicked {
+    background-color: #ff5757;
+  }
+
   .card-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* create 5 columns */
